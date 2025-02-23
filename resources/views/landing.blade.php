@@ -71,7 +71,7 @@
         <div class="text-lg font-semibold">
             <p class="mt-2"><strong class="text-blue-600">City:</strong> {{ $selectedCity }}</p>
             <p class="text-gray-600 dark:text-gray-300"><strong>Date:</strong> {{ $date }}</p>
-            <p class="text-lg text-blue-500 mt-3"><strong>🌙 Sehri Time:</strong> {{ $sehri }}</p>
+            <p class="text-lg text-blue-500 mt-3"><strong>🌙 Sehri Last Time:</strong> {{ $sehri }}</p>
             <p class="text-lg text-red-500"><strong>🌅 Iftar Time:</strong> {{ $iftar }}</p>
         </div>
     @else

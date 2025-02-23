@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -62,8 +63,8 @@ class PrayerTimeController extends Controller
                 'cities' => $cities,
                 'selectedCity' => $city,
                 'selectedDate' => $selectedDate,
-                'sehri' => $timings['Fajr'],
-                'iftar' => $timings['Maghrib'],
+                'sehri' => Carbon::parse($timings['Fajr'])->subMinute()->format('h:i A'),
+                'iftar' => Carbon::parse($timings['Maghrib'])->format('h:i A'),
                 'date' => $data['data']['date']['readable']
             ]);
         } else {
