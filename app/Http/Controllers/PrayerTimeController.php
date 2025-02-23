@@ -59,13 +59,15 @@ class PrayerTimeController extends Controller
 
         if ($response->successful() && isset($data['data']['timings'])) {
             $timings = $data['data']['timings'];
+            $hijriDate = $data['data']['date']['hijri'];
             return view('landing', [
                 'cities' => $cities,
                 'selectedCity' => $city,
                 'selectedDate' => $selectedDate,
                 'sehri' => Carbon::parse($timings['Fajr'])->subMinute()->format('h:i A'),
                 'iftar' => Carbon::parse($timings['Maghrib'])->format('h:i A'),
-                'date' => $data['data']['date']['readable']
+                'date' => $data['data']['date']['readable'],
+                'hijriDate' => "{$hijriDate['day']} {$hijriDate['month']['en']} {$hijriDate['year']} AH"
             ]);
         } else {
             return view('landing', [

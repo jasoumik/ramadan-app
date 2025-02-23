@@ -31,15 +31,18 @@
     <label for="toggle-theme" class="flex items-center cursor-pointer">
         <span class="mr-2 text-gray-800 dark:text-white">🌙</span>
         <div class="relative">
-            <input type="checkbox" id="toggle-theme" class="peer hidden" />
-            <div class="w-12 h-6 rounded-full bg-gray-300 dark:bg-gray-700 peer-checked:bg-gray-500 transition-all"></div>
-            <div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full shadow-md transition-all peer-checked:left-7"></div>
+            <input type="checkbox" id="toggle-theme" class="peer hidden"/>
+            <div
+                class="w-12 h-6 rounded-full bg-gray-300 dark:bg-gray-700 peer-checked:bg-gray-500 transition-all"></div>
+            <div
+                class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full shadow-md transition-all peer-checked:left-7"></div>
         </div>
         <span class="ml-2 text-gray-800 dark:text-white">☀️</span>
     </label>
 </div>
 
-<div class="bg-white bg-opacity-90 p-8 rounded-lg shadow-lg text-center w-full max-w-md transition-all duration-300 dark:bg-gray-800 dark:bg-opacity-90 dark:text-white">
+<div
+    class="bg-white bg-opacity-90 p-8 rounded-lg shadow-lg text-center w-full max-w-md transition-all duration-300 dark:bg-gray-800 dark:bg-opacity-90 dark:text-white">
     <!-- Header with Islamic Logo & Title -->
     <div class="flex flex-col items-center">
         <img src="{{ asset('images/mosque-icon.png') }}" alt="Prayer" class="w-16 mb-2">
@@ -51,7 +54,8 @@
     <form method="GET" id="prayerForm" class="my-4">
         <!-- City Selection Dropdown -->
         <label class="block font-semibold text-gray-700 mb-1 dark:text-gray-300">Select City:</label>
-        <select name="city" class="border p-2 rounded w-full dark:bg-gray-700 dark:text-white" onchange="this.form.submit()">
+        <select name="city" class="border p-2 rounded w-full dark:bg-gray-700 dark:text-white"
+                onchange="this.form.submit()">
             @foreach($cities as $city)
                 <option value="{{ $city }}" {{ $selectedCity == $city ? 'selected' : '' }}>
                     {{ $city }}
@@ -69,8 +73,9 @@
     <!-- Sehri & Iftar Timings -->
     @if(isset($sehri) && isset($iftar))
         <div class="text-lg font-semibold">
-            <p class="mt-2"><strong class="text-blue-600">City:</strong> {{ $selectedCity }}</p>
-            <p class="text-gray-600 dark:text-gray-300"><strong>Date:</strong> {{ $date }}</p>
+            <p class="mt-2"><strong class="text-blue-600">Hijri Date:</strong> {{$hijriDate }}</p>
+{{--            <p class="mt-2"><strong class="text-blue-600">City:</strong> {{ $selectedCity }}</p>--}}
+            <p class="text-gray-600 dark:text-gray-300"><strong> Selected Date:</strong> {{ $date }}</p>
             <p class="text-lg text-blue-500 mt-3"><strong>🌙 Sehri Last Time:</strong> {{ $sehri }}</p>
             <p class="text-lg text-red-500"><strong>🌅 Iftar Time:</strong> {{ $iftar }}</p>
         </div>
@@ -91,7 +96,8 @@
 
 <!-- Instruction Button -->
 <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2">
-    <a href="instructions.html" class="bg-blue-600 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-700 transition-all">
+    <a href="instructions.html"
+       class="bg-blue-600 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-700 transition-all">
         📜 Instructions
     </a>
 </div>
