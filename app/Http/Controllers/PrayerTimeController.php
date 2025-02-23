@@ -44,14 +44,13 @@ class PrayerTimeController extends Controller
 // Get selected city coordinates
         $latitude = $cityCoordinates[$city]['lat'] ?? 23.8103;  // Default to Dhaka
         $longitude = $cityCoordinates[$city]['lng'] ?? 90.4125;
-
-// Fetch prayer times using latitude and longitude
-        $response = Http::get("https://api.aladhan.com/v1/timings/{$selectedDate}", [
+        $formattedDate = date('d-m-Y', strtotime($selectedDate)); // Convert to correct format
+        // Fetch prayer times using latitude and longitude
+        $response = Http::get("https://api.aladhan.com/v1/timings/{$formattedDate}", [
             'latitude' => $latitude,
             'longitude' => $longitude,
-            'method' => 2, // Islamic Society of North America (ISNA)
+            'method' => 1, // UISK - University of Islamic Sciences, Karachi
         ]);
-
 
 
         // Convert API response
