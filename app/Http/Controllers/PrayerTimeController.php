@@ -60,6 +60,9 @@ class PrayerTimeController extends Controller
         if ($response->successful() && isset($data['data']['timings'])) {
             $timings = $data['data']['timings'];
             $hijriDate = $data['data']['date']['hijri'];
+            $hijriDay = (int) $hijriDate['day'] - 1; // Subtract 1 day
+            $hijriDateFormatted = "{$hijriDay} {$hijriDate['month']['en']} {$hijriDate['year']} AH";
+
             return view('landing', [
                 'cities' => $cities,
                 'selectedCity' => $city,
@@ -67,7 +70,7 @@ class PrayerTimeController extends Controller
                 'sehri' => Carbon::parse($timings['Fajr'])->subMinute()->format('h:i A'),
                 'iftar' => Carbon::parse($timings['Maghrib'])->format('h:i A'),
                 'date' => $data['data']['date']['readable'],
-                'hijriDate' => "{$hijriDate['day']} {$hijriDate['month']['en']} {$hijriDate['year']} AH"
+                'hijriDate' => $hijriDateFormatted
             ]);
         } else {
             return view('landing', [
